@@ -8,6 +8,7 @@
 #include <QSqlError>
 #include <QSqlDatabase>
 
+// test
 class Client
 {
 private:
