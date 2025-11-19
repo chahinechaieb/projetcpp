@@ -1,9 +1,35 @@
-#include <iostream>
+#include "smartopticalstore.h"
+#include "connection.h"
+#include <QApplication>
+#include <QMessageBox>
 
-using namespace std;
-
-int main()
+int main(int argc, char *argv[])
 {
-    cout << "Hello world!" << endl;
-    return 0;
+    QApplication a(argc, argv);
+
+    Connection c;
+    bool test = c.createconnect();  // test de la connexion à la base de données
+
+    if (test)
+    {
+        QMessageBox::information(nullptr, QObject::tr("Connexion à la base de données"),
+                                 QObject::tr("Connexion réussie.\n"
+                                             "Cliquez sur OK pour continuer."),
+                                 QMessageBox::Ok);
+
+        //Ouvre la fenêtre principale
+        SmartOpticalStore w;
+        w.show();
+
+        return a.exec(); // démarre l’application Qt
+    }
+    else
+    {
+        QMessageBox::critical(nullptr, QObject::tr("Erreur de connexion"),
+                              QObject::tr("Échec de la connexion à la base de données.\n"
+                                          "L'application va se fermer."),
+                              QMessageBox::Ok);
+
+        return 1; // quitte le programme
+    }
 }
