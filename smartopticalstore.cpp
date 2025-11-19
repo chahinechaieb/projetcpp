@@ -559,6 +559,7 @@ void SmartOpticalStore::on_btn_afficherClient_clicked()
     ui->gClient->resizeColumnsToContents();
     delete model;
 }
+// rechercher par telephone CLIENT
 void SmartOpticalStore::on_btnRechercher_2_clicked()
 {
     QString tel = ui->leRecherche_2->text();
@@ -595,6 +596,7 @@ void SmartOpticalStore::on_btnRechercher_2_clicked()
 
     delete model;
 }
+// trier par nom CLIENT
 void SmartOpticalStore::on_btnTrier_3_clicked()
 {
     QString nom = ui->leRecherche_2->text().trimmed();
